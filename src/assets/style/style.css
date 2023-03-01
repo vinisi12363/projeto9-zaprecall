@@ -1,5 +1,5 @@
 body {
-  background-color: aqua;
+  background-color: #e5e5e5;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,12 +17,10 @@ body {
   height: 667px;
   overflow: hidden;
 
-
 }
 
 .topIcons {
   min-width: 96%;
- 
   display: flex;
   flex-direction: row;
   height: 150px;
@@ -33,8 +31,8 @@ body {
   height: 60px;
   position: relative;
   top: 42px;
-  left:59px;
- 
+  left: 59px;
+
 }
 
 .topIcons h1 {
@@ -52,7 +50,7 @@ body {
   color: #FFFFFF;
   position: relative;
   top: 48px;
-  left:70px;
+  left: 70px;
 }
 
 .Decks {
@@ -64,17 +62,16 @@ body {
 
 }
 
-.FlashCards {
-  background-color: blueviolet;
+.flashCards {
   margin-top: 25px;
   width: 300px;
   height: 65px;
   background: #FFFFFF;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
-}
 
-.FlashCards p {
+}
+.flashCards p {
   position: absolute;
   width: 87px;
   height: 19px;
@@ -85,27 +82,177 @@ body {
   line-height: 19px;
   color: #333333;
   position: relative;
-  left:15px;
+  left: 15px;
   top: 23px;
 }
 
+.flashCards img {
+  position: relative;
+  left: 265px;
+  top: 2px;
+}
+.questionArea{
+  width: 300px;
+  height: 131px;
+  background: #FFFFD5;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items:  center;
+}
+
+.questionArea p {
+  width: 87px;
+  height: 19px;
+  font-family: 'Recursive';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #333333;
+  position: relative;
+  left: 15px;
+  top: 23px;
+}
+
+.questionArea img {
+  position: relative;
+  left: 265px;
+  top: 2px;
+}
+
+.flashVerse {
+  width: 300px;
+  height: 131px;
+  background: #FFFFD5;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items:  center;
+}
+
+.flashVerse .btnErrou {
+  width: 85px;
+  height: 37px;
+  background: #FF3030;
+  border-radius: 5px;
+  color: #FFFFFF;
+}
+
+.flashVerse .btnQuaseAcertou {
+  width: 85px;
+  height: 37px;
+  font-family: 'Recursive';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background: #ff912f;
+  color: #FFFFFF;
+  border-radius: 5px;
+}
+
+.flashVerse .btnAcertou {
+  width: 85px;
+  height: 37px;
+  background: #2FBE34;
+  border-radius: 5px;
+  color: #FFFFFF;
+}
+
+.responseArea {
+  position: relative;
+  top:18px;
+  height: 115px;
+  min-width: 96%;
+
+}
+.responseArea p {
+  font-family: 'Recursive';
+  font-style: normal;
+  font-weight: 400;
+  text-align: right;
+  font-size: 18px;
+  line-height: 22px;
+  color: #333333;
+}
+
+.btnArea{
+  position: relative;
+  top: 0px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-width: 96%;
+  
+}
+/*PARTE DE GIRAR AS CARTAS*/
+.flip-container:hover .flipper{
+	transform: rotateY(180deg);
+	/* se quiser uma animação na vertical,
+	troque por rotateX(180deg)
+	*/
+}
+.flipper{
+	width: 100%;
+	height: 100%;
+	transition: transform 0.8s;
+	transform-style: preserve-3d;
+}
+.flipper{
+	position: relative;
+
+}
+.questionArea, .flashVerse{
+	position: absolute;
+	
+}
+.flashVerse{
+	transform: rotateY(180deg);
+}
+
+.questionArea, .flashVerse{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+#setaVirar {
+  position: relative;
+  left: 0px;
+}
+.flip-container .flipper {
+  transform: rotateY(180deg);
+}
+/*FIM  DA PARTE DE GIRAR AS CARTAS*/
+
+
+.hide {
+  display: none;
+}
 
 .footer {
   position: fixed;
-  top:617px;
+  top: 617px;
   width: 375px;
   height: 70px;
   background: #FFFFFF;
   box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
   flex-direction: row;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
 }
 
 .footer p {
   position: relative;
-  left:115px;
-  top:15px;
+  left: 115px;
+  top: 15px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -118,4 +265,4 @@ body {
   color: #333333;
 
 }
-  
+
