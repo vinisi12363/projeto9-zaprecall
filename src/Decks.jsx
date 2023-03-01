@@ -19,12 +19,12 @@ function FlashCards() {
     return (
         <>
 
-            <div className='flashCards hide'>
+            <div className='flashCards '>
                 <p>pergunta 1</p>
                 <img src={seta}></img>
             </div>
-                
-                 <div className='flip-container'>
+            <>
+                {/* <div className='flip-container'>
                     <div className='flipper'>
                         <div className="questionArea">
                             <p>O que é JSX ?</p>
@@ -41,12 +41,25 @@ function FlashCards() {
                                 <button className='btnAcertou'>Zap!</button>
                             </div>
                         </div>
-                    </div>
-                 
+                    </div> */}
 
-                </div>
-               
+            </>
 
+
+            <div className='flashCards '>
+                <p>pergunta 1</p>
+                <img src={seta}></img>
+            </div>
+
+            <div className='flashCards '>
+                <p>pergunta 1</p>
+                <img src={seta}></img>
+            </div>
+
+            <div className='flashCards '>
+                <p>pergunta 1</p>
+                <img src={seta}></img>
+            </div>
 
 
 
