@@ -21,14 +21,14 @@ function FlashCards() {
 
             <div className='flashCards hide'>
                 <p>pergunta 1</p>
-                <button></button><img src={seta}></img>
+                <img src={seta}></img>
             </div>
-                 <img src={setaVirar} id="setaVirar"></img>
-                <div className='flip-container'>
+                
+                 <div className='flip-container'>
                     <div className='flipper'>
                         <div className="questionArea">
                             <p>O que é JSX ?</p>
-                            
+                            <img src={setaVirar} id="setaVirar"></img>
                         </div>
 
                         <div className='flashVerse'>

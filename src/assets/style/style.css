@@ -69,11 +69,11 @@ body {
   background: #FFFFFF;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
-
+  background: #feffd3;
 }
 .flashCards p {
-  position: absolute;
-  width: 87px;
+  
+  width: 300px;
   height: 19px;
   font-family: 'Recursive';
   font-style: normal;
@@ -92,19 +92,20 @@ body {
   top: 2px;
 }
 .questionArea{
-  width: 300px;
+  width: 100%;
   height: 131px;
-  background: #FFFFD5;
+ 
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items:  center;
+  background: #feffd3;
 }
 
 .questionArea p {
-  width: 87px;
-  height: 19px;
+  width: 280px;
+ 
   font-family: 'Recursive';
   font-style: normal;
   font-weight: 700;
@@ -114,6 +115,7 @@ body {
   position: relative;
   left: 15px;
   top: 23px;
+  background: #feffd3;
 }
 
 .questionArea img {
@@ -123,7 +125,7 @@ body {
 }
 
 .flashVerse {
-  width: 300px;
+  width: 100%;
   height: 131px;
   background: #FFFFD5;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
@@ -131,6 +133,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items:  center;
+  background: #feffd3;
 }
 
 .flashVerse .btnErrou {
@@ -170,9 +173,11 @@ body {
   top:18px;
   height: 115px;
   min-width: 96%;
+  background: #feffd3;
 
 }
 .responseArea p {
+  width: 300px;
   font-family: 'Recursive';
   font-style: normal;
   font-weight: 400;
@@ -188,20 +193,19 @@ body {
   margin-bottom: 5px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  min-width: 96%;
+  justify-content: space-around;
+  min-width: 300px;
+  height: 45px;
+  background: #feffd3;
+
   
 }
 /*PARTE DE GIRAR AS CARTAS*/
 .flip-container:hover .flipper{
 	transform: rotateY(180deg);
-	/* se quiser uma animação na vertical,
-	troque por rotateX(180deg)
-	*/
 }
 .flipper{
-	width: 100%;
-	height: 100%;
+
 	transition: transform 0.8s;
 	transform-style: preserve-3d;
 }
@@ -219,15 +223,14 @@ body {
 
 .questionArea, .flashVerse{
   position: absolute;
-  width: 100%;
-  height: 100%;
   backface-visibility: hidden;
 }
 #setaVirar {
   position: relative;
-  left: 0px;
+  top:8px;
+  left: 130px;
 }
-.flip-container .flipper {
+#setaVirar:focus~.flip-container .flipper {
   transform: rotateY(180deg);
 }
 /*FIM  DA PARTE DE GIRAR AS CARTAS*/
