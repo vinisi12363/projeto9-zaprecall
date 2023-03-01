@@ -20,6 +20,10 @@ function FlashCards() {
             <div className="FlashCards"><p>pergunta1</p></div>
             <div className="FlashCards"><p>pergunta1</p></div>
             <div className="FlashCards"><p>pergunta1</p></div>
+            <div className="FlashCards"><p>pergunta1</p></div>
+           
+           
+            
         </>
 
     )
