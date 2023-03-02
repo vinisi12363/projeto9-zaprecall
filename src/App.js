@@ -6,22 +6,18 @@ import { useState } from "react";
 
 
 export default function App(){
-  const [clickNaSeta, setClickNaSeta] = useState(false);
-  const [clickNaSetaVirar, setClickNaSetaVirar] = useState(false);
+  
   const [resposta, setResposta] = useState("")
   return (
+
       <Main>
         <Top></Top>
         <Decks
-          clickNaSeta = {clickNaSeta}
-          setClickNaSeta = {setClickNaSeta}
-          clickNaSetaVirar = {clickNaSetaVirar}
-          setClickNaSetaVirar = {setClickNaSetaVirar}
+          
           resposta = {resposta}
           setResposta =  {setResposta}
        
-        
-          
+
         />
        
         <Footer

@@ -2,18 +2,25 @@ import styled from 'styled-components';
 import seta from './assets/images/seta_play.png'
 import setaVirarImg from './assets/images/seta_virar.png'
 import cards from "./cards.js"
-export default function Decks({ clickNaSeta, setClickNaSeta, clickNaSetaVirar, setClickNaSetaVirar }) {
+import { useState } from "react";
+export default function Decks({ resposta, setResposta}) {
 
 
     return (
 
         <DecksStyle>
             <FlashCards
-                clickNaSeta={clickNaSeta}
-                setClickNaSeta={setClickNaSeta}
-                clickNaSetaVirar={clickNaSetaVirar}
-                setClickNaSetaVirar={setClickNaSetaVirar}
-            />
+                
+                resposta={resposta}
+                setResposta={setResposta}
+           
+             />
+              <FlashCards
+              
+                resposta={resposta}
+                setResposta={setResposta}
+           
+             />
         </DecksStyle>
 
     )
@@ -21,12 +28,32 @@ export default function Decks({ clickNaSeta, setClickNaSeta, clickNaSetaVirar, s
 }
 
 
-function FlashCards({ clickNaSeta, setClickNaSeta, clickNaSetaVirar, setClickNaSetaVirar }) {
+function FlashCards({ resposta, setResposta }) {
+    const [clickNaSeta, setClickNaSeta] = useState(false);
+    const [clickNaSetaVirar, setClickNaSetaVirar] = useState(false);
     function setarDivs() {
         setClickNaSeta(true)
     }
     function setaVirar() {
         setClickNaSetaVirar(true)
+    }
+
+    function setAcertou(){
+        setResposta("acertou")
+        setClickNaSetaVirar (false)
+        setClickNaSeta (false)
+    }
+
+    function setQuase(){
+        setResposta ("quase")
+        setClickNaSetaVirar (false)
+        setClickNaSeta (false)
+    }
+
+    function setErrou (){
+        setResposta("errou")
+        setClickNaSetaVirar (false)
+        setClickNaSeta (false)
     }
     return (
         <>
@@ -45,9 +72,9 @@ function FlashCards({ clickNaSeta, setClickNaSeta, clickNaSetaVirar, setClickNaS
             <ResponseAreaStyle clickNaSeta={clickNaSeta} clickNaSetaVirar={clickNaSetaVirar}>
                 <p>JSX é uma sintaxe dentro do JS </p>
                 <div className='btnArea'>
-                    <button className="btnErrou">Não Lembrei</button>
-                    <button className="btnQuaseAcertou">Quase Lembrei</button>
-                    <button className='btnAcertou'>Zap!</button>
+                    <button className="btnErrou" onClick={()=> setErrou()}>Não Lembrei</button>
+                    <button className="btnQuaseAcertou" onClick={()=> setQuase()}>Quase Lembrei</button>
+                    <button className='btnAcertou' onClick={()=> setAcertou()}>Zap!</button>
                 </div>
             </ResponseAreaStyle>
 
@@ -102,6 +129,7 @@ const DecksStyle = styled.div`
 `
 
 const QuestionAreaStyle = styled.div`
+    margin-top:25px;
   width: 100%;
   height: 131px;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
@@ -134,7 +162,7 @@ const QuestionAreaStyle = styled.div`
 `
 
 const ResponseAreaStyle = styled.div`
-  
+    margin-top : 25px;
     display: ${(props) => props.clickNaSeta ? "" : "none"};
     display: ${(props) => props.clickNaSetaVirar ? "" : "none"};
     width: 100%;
