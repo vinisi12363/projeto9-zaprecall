@@ -4,6 +4,7 @@ export default function Top() {
     return (
 
         <TopIcons>
+         
             <img src={logo}></img>
             <h1> ZapRecall</h1>
         </TopIcons>
@@ -13,6 +14,9 @@ export default function Top() {
 }
 
 const TopIcons = styled.div`
+
+    justify-content:center;
+ 
   min-width: 96%;
   display: flex;
   flex-direction: row;
@@ -22,7 +26,7 @@ const TopIcons = styled.div`
   height: 60px;
   position: relative;
   top: 42px;
-  left: 59px;
+  left: 10px;
 
   } 
   h1 {
@@ -40,6 +44,6 @@ const TopIcons = styled.div`
   color: #FFFFFF;
   position: relative;
   top: 48px;
-  left: 70px;
+  left: 30px;
   }
 `

@@ -35,13 +35,13 @@ export default function App(){
 
 
 const Main = styled.div`
-    margin-top: 20px;
+  
   background-color: #fb6b6b;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 375px;
-  height: 667px;
+  min-width: 100vw;
+  height: calc(100vw-70px);
   overflow: hidden;
 
 `

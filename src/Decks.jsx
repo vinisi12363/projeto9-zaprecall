@@ -91,7 +91,7 @@ const FlashCardStyle = styled.div`
     display: ${(props) => props.clickNaSeta && "none"};
     margin-top: 25px;
     width: 300px;
-    height: 65px;
+    min-height: 65px;
     background: #FFFFFF;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
@@ -122,6 +122,7 @@ const FlashCardStyle = styled.div`
 const DecksStyle = styled.div`
   min-width: 96%;
   display: flex;
+  height:100%;
   flex-direction: column;
   align-items: center;
   overflow:hidden;
@@ -130,8 +131,8 @@ const DecksStyle = styled.div`
 
 const QuestionAreaStyle = styled.div`
     margin-top:25px;
-  width: 100%;
-  height: 131px;
+    max-width:300px;
+  min-height: 131px;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
   display: flex;
@@ -155,8 +156,8 @@ const QuestionAreaStyle = styled.div`
   }
     img{
     position: relative;
-    left: 150px;
-    top: 80px;
+    left: 120px;
+    top: 90px;
   } 
 
 `
@@ -165,8 +166,8 @@ const ResponseAreaStyle = styled.div`
     margin-top : 25px;
     display: ${(props) => props.clickNaSeta ? "" : "none"};
     display: ${(props) => props.clickNaSetaVirar ? "" : "none"};
-    width: 100%;
-    height: 131px;
+    max-width:300px;
+    min-height: 131px;
     background: #FFFFD5;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
