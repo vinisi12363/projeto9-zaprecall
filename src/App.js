@@ -3,20 +3,36 @@ import Top from "./Top"
 import Footer from "./Footer"
 import styled from "styled-components";
 import { useState } from "react";
-import { click } from "@testing-library/user-event/dist/click";
+
 
 export default function App(){
   const [clickNaSeta, setClickNaSeta] = useState(false);
-
+  const [clickNaSetaVirar, setClickNaSetaVirar] = useState(false);
+  const [resposta, setResposta] = useState("")
   return (
       <Main>
         <Top></Top>
         <Decks
           clickNaSeta = {clickNaSeta}
           setClickNaSeta = {setClickNaSeta}
+          clickNaSetaVirar = {clickNaSetaVirar}
+          setClickNaSetaVirar = {setClickNaSetaVirar}
+          resposta = {resposta}
+          setResposta =  {setResposta}
+       
+        
+          
+        />
+       
+        <Footer
+        
+          resposta = {resposta}
+          setResposta =  {setResposta}
+        
 
-        ></Decks>
-        <Footer></Footer>
+        />
+         
+      
       </Main>
   )
 }
