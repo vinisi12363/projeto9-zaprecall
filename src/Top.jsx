@@ -18,7 +18,7 @@ const TopIcons = styled.div`
   flex-direction: row;
   height: 150px; 
   img {
-    width: 52px;
+  width: 52px;
   height: 60px;
   position: relative;
   top: 42px;
@@ -26,7 +26,7 @@ const TopIcons = styled.div`
 
   } 
   h1 {
-    width: 203.17px;
+  width: 203.17px;
   height: 44px;
   font-family: 'Righteous';
   font-style: normal;
