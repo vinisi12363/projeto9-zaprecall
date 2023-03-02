@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import seta from './assets/images/seta_play.png'
 import setaVirarImg from './assets/images/seta_virar.png'
-import cards from "./cards.js"
+import cardsArray from "./cards"
 import { useState } from "react";
 export default function Decks({ resposta, setResposta}) {
 
@@ -9,18 +9,18 @@ export default function Decks({ resposta, setResposta}) {
     return (
 
         <DecksStyle>
-            <FlashCards
-                
-                resposta={resposta}
-                setResposta={setResposta}
-           
-             />
-              <FlashCards
-              
-                resposta={resposta}
-                setResposta={setResposta}
-           
-             />
+                        {cardsArray.map((card, index) => (
+                            <FlashCards
+                                index={index}
+                                question={card.question}
+                                answer={card.answer}
+                                resposta={resposta}
+                                setResposta={setResposta}
+                            />
+                        ))}
+
+
+
         </DecksStyle>
 
     )
@@ -28,7 +28,7 @@ export default function Decks({ resposta, setResposta}) {
 }
 
 
-function FlashCards({ resposta, setResposta }) {
+function FlashCards({index, question, answer, resposta, setResposta }) {
     const [clickNaSeta, setClickNaSeta] = useState(false);
     const [clickNaSetaVirar, setClickNaSetaVirar] = useState(false);
     function setarDivs() {
@@ -59,18 +59,18 @@ function FlashCards({ resposta, setResposta }) {
         <>
 
             <FlashCardStyle clickNaSeta={clickNaSeta} >
-                <p>pergunta 1</p>
+                <p>pergunta {index+1}</p>
                 <img src={seta} onClick={() => setarDivs()}></img>
             </FlashCardStyle>
 
             <QuestionAreaStyle clickNaSeta={clickNaSeta} clickNaSetaVirar={clickNaSetaVirar}>
-                <p>O que é JSX ?</p>
+                <p>{question}</p>
                 <img src={setaVirarImg} id="setaVirarImg" onClick={() => setaVirar()}></img>
             </QuestionAreaStyle>
 
 
             <ResponseAreaStyle clickNaSeta={clickNaSeta} clickNaSetaVirar={clickNaSetaVirar}>
-                <p>JSX é uma sintaxe dentro do JS </p>
+                <p>{answer}</p>
                 <div className='btnArea'>
                     <button className="btnErrou" onClick={()=> setErrou()}>Não Lembrei</button>
                     <button className="btnQuaseAcertou" onClick={()=> setQuase()}>Quase Lembrei</button>
