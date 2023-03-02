@@ -1,8 +1,16 @@
 import styled from 'styled-components';
 import seta from './assets/images/seta_play.png'
 import setaVirarImg from './assets/images/seta_virar.png'
+import iconeCerto from "./assets/images/icone_certo.png"
+import iconeErro from "./assets/images/icone_erro.png"
+import iconeQuase from "./assets/images/icone_quase.png"
+import party from "./assets/images/party.png"
+import sad from "./assets/images/sad.png"
+
 import cardsArray from "./cards"
 import { useState } from "react";
+
+
 export default function Decks({ resposta, setResposta}) {
 
 
@@ -29,8 +37,14 @@ export default function Decks({ resposta, setResposta}) {
 
 
 function FlashCards({index, question, answer, resposta, setResposta }) {
-    const [clickNaSeta, setClickNaSeta] = useState(false);
-    const [clickNaSetaVirar, setClickNaSetaVirar] = useState(false);
+    const [imagemIcon , setImageIcon] = useState(seta)
+    const [color , setColor] = useState ("black")
+    const [clickNaSeta, setClickNaSeta] = useState(false)
+    const [clickNaSetaVirar, setClickNaSetaVirar] = useState(false)
+    const [flagResposta, setFlagResposta] = useState(0)
+    const [flagAcertou, setFlagAcertou] = useState(false) 
+    const [flagQuase, setFlagQuase] = useState(false)
+    const [flagErrou, setFlagErrou] = useState(false)
     function setarDivs() {
         setClickNaSeta(true)
     }
@@ -39,28 +53,42 @@ function FlashCards({index, question, answer, resposta, setResposta }) {
     }
 
     function setAcertou(){
-        setResposta("acertou")
+        setResposta([...resposta, "acertou"])
         setClickNaSetaVirar (false)
         setClickNaSeta (false)
+        setFlagResposta(3)
+        console.log ("ola",flagResposta)
+        setFlagAcertou (true)
+        setImageIcon(iconeCerto)
+        setColor("#2FBE34")
     }
 
     function setQuase(){
-        setResposta ("quase")
+        setResposta ([...resposta,"quase"])
         setClickNaSetaVirar (false)
         setClickNaSeta (false)
+        setFlagResposta(2)
+        setFlagQuase (true)
+        setImageIcon(iconeQuase)
+        setColor("#FF912F")
     }
 
     function setErrou (){
-        setResposta("errou")
+        setResposta([...resposta,"errou"])
         setClickNaSetaVirar (false)
         setClickNaSeta (false)
+        setFlagResposta(1)
+        setFlagErrou(true)
+        setImageIcon(iconeErro)
+        setColor("#FF3030")
     }
+    
     return (
         <>
 
-            <FlashCardStyle clickNaSeta={clickNaSeta} >
+            <FlashCardStyle clickNaSeta={clickNaSeta} flagResposta={flagResposta} flagAcertou={flagAcertou} flagErrou= {flagErrou} flagQuase={flagQuase} imagemIcon={imagemIcon} color={color}>
                 <p>pergunta {index+1}</p>
-                <img src={seta} onClick={() => setarDivs()}></img>
+                <img src={imagemIcon} onClick={() => setarDivs()}></img>
             </FlashCardStyle>
 
             <QuestionAreaStyle clickNaSeta={clickNaSeta} clickNaSetaVirar={clickNaSetaVirar}>
@@ -106,7 +134,7 @@ const FlashCardStyle = styled.div`
         font-weight: 700;
         font-size: 16px;
         line-height: 19px;
-        color: #333333;
+        color: ${(props)=>props.color };
         position: relative;
         left: 15px;
         top: 23px;
