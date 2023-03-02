@@ -1,14 +1,18 @@
+import { click } from '@testing-library/user-event/dist/click';
 import styled from 'styled-components';
 import seta from './assets/images/seta_play.png'
 import setaVirar from './assets/images/seta_virar.png'
 import cards from "./cards.js"
-export default function Decks() {
+export default function Decks({clickNaSeta,setClickNaSeta}) {
 
 
     return (
 
         <DecksStyle>
-             <FlashCards/>
+             <FlashCards
+                clickNaSeta = {clickNaSeta}
+                setClickNaSeta = {setClickNaSeta}
+             />
         </DecksStyle>
 
     )
@@ -16,20 +20,20 @@ export default function Decks() {
 }
 
 
-function FlashCards() {
+function FlashCards({clickNaSeta,setClickNaSeta}) {
     function setarDivs() {
-    
+      setClickNaSeta(true);
     }
 
     return (
         <>
 
-            <FlashCardStyle>
+            <FlashCardStyle clickNaSeta={clickNaSeta} >
                 <p>pergunta 1</p>
                 <img src={seta} onClick={()=>setarDivs()}></img>
             </FlashCardStyle>
             
-            <QuestionAreaStyle>
+            <QuestionAreaStyle clickNaSeta={clickNaSeta}>
                 <p>O que é JSX ?</p>
                 <img src={setaVirar} id="setaVirar"></img>
             </QuestionAreaStyle>
@@ -38,8 +42,20 @@ function FlashCards() {
     )
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 const FlashCardStyle = styled.div`
-     display:none;
+   
     margin-top: 25px;
     width: 300px;
     height: 65px;
@@ -47,6 +63,7 @@ const FlashCardStyle = styled.div`
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
     background: #feffd3;
+    display: ${(props)=> props.clickNaSeta && "none"};
     
     p{
         width: 300px;
@@ -74,6 +91,7 @@ const DecksStyle =styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow:hidden;
 
 `
 
@@ -86,6 +104,7 @@ const QuestionAreaStyle = styled.div`
   flex-direction: column;
   align-items:  center;
   background: #feffd3;
+  display: ${(props)=> props.clickNaSeta? "":"none" };
 
   p{
     width: 280px;
