@@ -116,15 +116,19 @@ function FlashCards({index, question, answer, resposta, setResposta, contRespond
 
             <QuestionAreaStyle clickNaSeta={clickNaSeta} clickNaSetaVirar={clickNaSetaVirar}>
                 <p data-test="flashcard-text" >{question}</p>
-                <div data-test= {stringState}>
-                     <img src={setaVirarImg}  id="setaVirarImg" onClick={() => setaVirar() }></img>
-                </div>
+                
+                <img src={setaVirarImg} data-test= {stringState}  id="setaVirarImg" onClick={() => setaVirar() }></img>
+                
                
             </QuestionAreaStyle>
 
 
             <ResponseAreaStyle clickNaSeta={clickNaSeta} clickNaSetaVirar={clickNaSetaVirar}>
-                <p className="pResponseArea"data-test="flashcard-text">{answer}</p>
+                <div>
+                     <p className="pResponseArea"data-test="flashcard-text">{answer}</p>
+                </div>
+            
+                
                 <div className='btnArea'>
                     <button data-test = "no-btn" className="btnErrou" onClick={()=> setErrou()}>Não Lembrei</button>
                     <button data-test = "partial-btn"className="btnQuaseAcertou" onClick={()=> setQuase()}>Quase Lembrei</button>
@@ -218,7 +222,7 @@ const ResponseAreaStyle = styled.div`
     margin-top : 25px;
     display: ${(props) => props.clickNaSeta ? "" : "none"};
     display: ${(props) => props.clickNaSetaVirar ? "" : "none"};
-    min-width:300px;
+    max-width:300px;
     min-height: 131px;
     background: #FFFFD5;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
@@ -235,57 +239,61 @@ const ResponseAreaStyle = styled.div`
         background: #feffd3;
     }
 
-    .responseArea .pResponseArea p {
+    p {
         width: 300px;
         font-family: 'Recursive';
         font-style: normal;
         font-weight: 700;
-        font-size: 18px;
+        font-size: 16px;
         line-height: 18px;
         color: #333333;
+        position:relative;
+        left: 5px;
+        top: 10px;
     }
     .btnArea{
-    position: relative;
-    top: 60px;
-    margin-bottom: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    min-width: 300px;
-    height: 45px;
-    background: #feffd3;
-    
-    .btnErrou{
-        width: 85px;
-        height: 37px;
-        background: #FF3030;
-        border-radius: 5px;
-        color: #FFFFFF;
-    }
-
-    .btnQuaseAcertou{
-        width: 85px;
-        height: 37px;
-        font-family: 'Recursive';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 14px;
+        position: relative;
+        top: 60px;
+        margin-bottom: 5px;
         display: flex;
-        align-items: center;
-        text-align: center;
-        background: #ff912f;
-        color: #FFFFFF;
+        flex-direction: row;
+        justify-content: space-around;
+        min-width: 300px;
+        height: 45px;
+        background: #feffd3;
         border-radius: 5px;
+        
+        .btnErrou{
+            width: 85px;
+            height: 37px;
+            background: #FF3030;
+            border-radius: 5px;
+            color: #FFFFFF;
+        }
+
+        .btnQuaseAcertou{
+            width: 85px;
+            height: 37px;
+            font-family: 'Recursive';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 14px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            background: #ff912f;
+            color: #FFFFFF;
+            border-radius: 5px;
+        }
+        .btnAcertou{
+            width: 85px;
+            height: 37px;
+            background: #2FBE34;
+            border-radius: 5px;
+            color: #FFFFFF;
+        }
     }
-    .btnAcertou{
-        width: 85px;
-        height: 37px;
-        background: #2FBE34;
-        border-radius: 5px;
-        color: #FFFFFF;
-    }
-}
 
 
   
