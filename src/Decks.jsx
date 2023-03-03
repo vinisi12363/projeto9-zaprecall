@@ -47,22 +47,21 @@ export default function Decks({resposta, setResposta, contRespondidas,setContRes
 
 function FlashCards({index, question, answer, resposta, setResposta, contRespondidas, setContRespondidas }) {
     const [imagemIcon , setImageIcon] = useState(seta)
-    const [color , setColor] = useState ("black")
+    const [color, setColor] = useState("black")
     const [clickNaSeta, setClickNaSeta] = useState(false)
     const [clickNaSetaVirar, setClickNaSetaVirar] = useState(false)
-    const [flagResposta, setFlagResposta] = useState(0)
     const [flagAcertou, setFlagAcertou] = useState(false) 
     const [flagQuase, setFlagQuase] = useState(false)
     const [flagErrou, setFlagErrou] = useState(false)
     const [stringState, setStringState] = useState("play-btn");
-    let test=true
+   
     function setarDivs() {
        if(imagemIcon===seta) {
             setClickNaSeta(true) 
         }
-        
-       
+           
     }
+
     function setaVirar() {
         setClickNaSetaVirar(true)
     }
@@ -72,7 +71,6 @@ function FlashCards({index, question, answer, resposta, setResposta, contRespond
         setResposta([...resposta, iconeCerto])
         setClickNaSetaVirar (false)
         setClickNaSeta (false)
-        setFlagResposta(3)
         setFlagAcertou (true)
         setImageIcon(iconeCerto)
         setColor("#2FBE34")
@@ -85,7 +83,6 @@ function FlashCards({index, question, answer, resposta, setResposta, contRespond
         setResposta ([...resposta, iconeQuase])
         setClickNaSetaVirar (false)
         setClickNaSeta (false)
-        setFlagResposta(2)
         setFlagQuase (true)
         setImageIcon(iconeQuase)
         setColor("#FF912F")
@@ -98,7 +95,6 @@ function FlashCards({index, question, answer, resposta, setResposta, contRespond
         setResposta([...resposta, iconeErro])
         setClickNaSetaVirar (false)
         setClickNaSeta (false)
-        setFlagResposta(1)
         setFlagErrou(true)
         setImageIcon(iconeErro)
         setColor("#FF3030")
@@ -110,9 +106,9 @@ function FlashCards({index, question, answer, resposta, setResposta, contRespond
     return (
         <>
 
-            <FlashCardStyle  clickNaSeta={clickNaSeta} flagResposta={flagResposta} flagAcertou={flagAcertou} flagErrou= {flagErrou} flagQuase={flagQuase} imagemIcon={imagemIcon} color={color}>
+            <FlashCardStyle  clickNaSeta={clickNaSeta}  flagAcertou={flagAcertou} flagErrou= {flagErrou} flagQuase={flagQuase} imagemIcon={imagemIcon} color={color}>
                <div data-test="flashcard">
-                    <p data-test="flashcard-text">pergunta {index+1}</p>
+                    <p data-test="flashcard-text">Pergunta {index+1}</p>
                     <img src={imagemIcon} onClick={() => setarDivs()} ></img>
                </div>
                
@@ -120,7 +116,7 @@ function FlashCards({index, question, answer, resposta, setResposta, contRespond
 
             <QuestionAreaStyle clickNaSeta={clickNaSeta} clickNaSetaVirar={clickNaSetaVirar}>
                 <p data-test="flashcard-text" >{question}</p>
-                <div data-test={stringState}>
+                <div data-test= {stringState}>
                      <img src={setaVirarImg}  id="setaVirarImg" onClick={() => setaVirar() }></img>
                 </div>
                
@@ -128,7 +124,7 @@ function FlashCards({index, question, answer, resposta, setResposta, contRespond
 
 
             <ResponseAreaStyle clickNaSeta={clickNaSeta} clickNaSetaVirar={clickNaSetaVirar}>
-                <p data-test="flashcard-text">{answer}</p>
+                <p className="pResponseArea"data-test="flashcard-text">{answer}</p>
                 <div className='btnArea'>
                     <button data-test = "no-btn" className="btnErrou" onClick={()=> setErrou()}>Não Lembrei</button>
                     <button data-test = "partial-btn"className="btnQuaseAcertou" onClick={()=> setQuase()}>Quase Lembrei</button>
@@ -157,7 +153,7 @@ const FlashCardStyle = styled.div`
     p{
         width: 300px;
         height: 19px;
-        font-family: 'Recursive';
+        font-family: 'Recursive' 'sans-serif';
         font-style: normal;
         font-weight: 700;
         font-size: 16px;
@@ -187,7 +183,7 @@ const DecksStyle = styled.div`
 
 const QuestionAreaStyle = styled.div`
   margin-top:25px;
-  max-width:300px;
+  min-width:300px;
   min-height: 131px;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
@@ -207,7 +203,7 @@ const QuestionAreaStyle = styled.div`
     line-height: 19px;
     color: #333333;
     position: relative;
-    left: 1px;
+    left: 5px;
     top: 10px;
   }
     img{
@@ -222,7 +218,7 @@ const ResponseAreaStyle = styled.div`
     margin-top : 25px;
     display: ${(props) => props.clickNaSeta ? "" : "none"};
     display: ${(props) => props.clickNaSetaVirar ? "" : "none"};
-    max-width:300px;
+    min-width:300px;
     min-height: 131px;
     background: #FFFFD5;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
@@ -239,14 +235,13 @@ const ResponseAreaStyle = styled.div`
         background: #feffd3;
     }
 
-    .responseArea p {
+    .responseArea .pResponseArea p {
         width: 300px;
-        font-family: 'Righteous';
+        font-family: 'Recursive';
         font-style: normal;
-        font-weight: 400;
-        text-align: right;
+        font-weight: 700;
         font-size: 18px;
-        line-height: 22px;
+        line-height: 18px;
         color: #333333;
     }
     .btnArea{
