@@ -1,35 +1,29 @@
 import Decks from "./Decks";
 import Top from "./Top"
-import Footer from "./Footer"
+import Footer from "./Footer";
 import styled from "styled-components";
 import { useState } from "react";
 
 
+
 export default function App(){
-  
+  const [contRespondidas, setContRespondidas] = useState(0)
   const [resposta, setResposta] = useState([])
   
   return (
 
       <Main>
-        <Top></Top>
+        <Top/>
         <Decks
-          
-          resposta = {resposta}
-          setResposta =  {setResposta}
-       
-
-        />
-       
+            resposta = {resposta}
+            contRespondidas = {contRespondidas}
+            setContRespondidas={setContRespondidas}
+            setResposta={setResposta}
+        />  
         <Footer
-        
-          resposta = {resposta}
-          setResposta =  {setResposta}
-        
-
+            resposta = {resposta}
+            contRespondidas = {contRespondidas}
         />
-         
-      
       </Main>
   )
 }

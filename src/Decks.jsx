@@ -4,39 +4,44 @@ import setaVirarImg from './assets/images/seta_virar.png'
 import iconeCerto from "./assets/images/icone_certo.png"
 import iconeErro from "./assets/images/icone_erro.png"
 import iconeQuase from "./assets/images/icone_quase.png"
-import party from "./assets/images/party.png"
-import sad from "./assets/images/sad.png"
-
 import cardsArray from "./cards"
 import { useState } from "react";
 
 
-export default function Decks({ resposta, setResposta}) {
+export default function Decks({resposta, setResposta, contRespondidas,setContRespondidas}) {
 
 
     return (
-
-        <DecksStyle>
-                        {cardsArray.map((card, index) => (
+      <>
+        <DecksStyle>     
+                        
+                        {   
+                            cardsArray.map((card, index) => (
                             <FlashCards
                                 index={index}
                                 question={card.question}
                                 answer={card.answer}
                                 resposta={resposta}
                                 setResposta={setResposta}
+                                contRespondidas={contRespondidas}
+                                setContRespondidas={setContRespondidas}
+
                             />
                         ))}
 
 
 
         </DecksStyle>
-
+     
+                         
+                        
+      </>
     )
 
 }
 
 
-function FlashCards({index, question, answer, resposta, setResposta }) {
+function FlashCards({index, question, answer, resposta, setResposta, contRespondidas, setContRespondidas }) {
     const [imagemIcon , setImageIcon] = useState(seta)
     const [color , setColor] = useState ("black")
     const [clickNaSeta, setClickNaSeta] = useState(false)
@@ -53,35 +58,42 @@ function FlashCards({index, question, answer, resposta, setResposta }) {
     }
 
     function setAcertou(){
-        setResposta([...resposta, "acertou"])
+       
+        setResposta([...resposta, iconeCerto])
         setClickNaSetaVirar (false)
         setClickNaSeta (false)
         setFlagResposta(3)
-        console.log ("ola",flagResposta)
         setFlagAcertou (true)
         setImageIcon(iconeCerto)
         setColor("#2FBE34")
+        contRespondidas+=1;
+        setContRespondidas(contRespondidas)
     }
 
     function setQuase(){
-        setResposta ([...resposta,"quase"])
+        setResposta ([...resposta, iconeQuase])
         setClickNaSetaVirar (false)
         setClickNaSeta (false)
         setFlagResposta(2)
         setFlagQuase (true)
         setImageIcon(iconeQuase)
         setColor("#FF912F")
+        contRespondidas+=1;
+        setContRespondidas(contRespondidas)
     }
 
     function setErrou (){
-        setResposta([...resposta,"errou"])
+        setResposta([...resposta, iconeErro])
         setClickNaSetaVirar (false)
         setClickNaSeta (false)
         setFlagResposta(1)
         setFlagErrou(true)
         setImageIcon(iconeErro)
         setColor("#FF3030")
+        contRespondidas+=1;
+        setContRespondidas(contRespondidas)
     }
+ 
     
     return (
         <>
@@ -110,8 +122,6 @@ function FlashCards({index, question, answer, resposta, setResposta }) {
 
     )
 }
-
-
 
 
 
