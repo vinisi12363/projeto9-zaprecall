@@ -120,7 +120,10 @@ function FlashCards({index, question, answer, resposta, setResposta, contRespond
 
             <QuestionAreaStyle clickNaSeta={clickNaSeta} clickNaSetaVirar={clickNaSetaVirar}>
                 <p data-test="flashcard-text" >{question}</p>
-                <img src={setaVirarImg} data-test={stringState} id="setaVirarImg" onClick={() => setaVirar() }></img>
+                <div data-test={stringState}>
+                     <img src={setaVirarImg}  id="setaVirarImg" onClick={() => setaVirar() }></img>
+                </div>
+               
             </QuestionAreaStyle>
 
 
