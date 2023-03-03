@@ -12,7 +12,7 @@ export default function Footer({resposta, contRespondidas}){
 
     return (
         <FooterStyle>
-            <div className="footer">
+            <div className="footer" data-test="footer">
             {/* <div className='terminado'>
 
             </div> */}

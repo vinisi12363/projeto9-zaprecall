@@ -14,9 +14,10 @@ export default function Decks({resposta, setResposta, contRespondidas,setContRes
     return (
       <>
         <DecksStyle>     
-                        <div data-test="flashcard">
+                       
                             {   
                                 cardsArray.map((card, index) => (
+                                
                                 <FlashCards
                                     index={index}
                                     question={card.question}
@@ -29,7 +30,7 @@ export default function Decks({resposta, setResposta, contRespondidas,setContRes
                                 />
                             ))}
 
-                        </div>
+                  
                  
 
 
@@ -109,9 +110,12 @@ function FlashCards({index, question, answer, resposta, setResposta, contRespond
     return (
         <>
 
-            <FlashCardStyle clickNaSeta={clickNaSeta} flagResposta={flagResposta} flagAcertou={flagAcertou} flagErrou= {flagErrou} flagQuase={flagQuase} imagemIcon={imagemIcon} color={color}>
-                <p data-test="flashcard-text">pergunta {index+1}</p>
-                <img src={imagemIcon} onClick={() => setarDivs()} ></img>
+            <FlashCardStyle  clickNaSeta={clickNaSeta} flagResposta={flagResposta} flagAcertou={flagAcertou} flagErrou= {flagErrou} flagQuase={flagQuase} imagemIcon={imagemIcon} color={color}>
+               <div data-test="flashcard">
+                    <p data-test="flashcard-text">pergunta {index+1}</p>
+                    <img src={imagemIcon} onClick={() => setarDivs()} ></img>
+               </div>
+               
             </FlashCardStyle>
 
             <QuestionAreaStyle clickNaSeta={clickNaSeta} clickNaSetaVirar={clickNaSetaVirar}>
