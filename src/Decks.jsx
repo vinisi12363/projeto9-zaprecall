@@ -157,7 +157,7 @@ const FlashCardStyle = styled.div`
     p{
         width: 300px;
         height: 19px;
-        font-family: 'Recursive' 'sans-serif';
+        font-family: 'Recursive';
         font-style: normal;
         font-weight: 700;
         font-size: 16px;
