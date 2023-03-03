@@ -109,7 +109,7 @@ function FlashCards({index, question, answer, resposta, setResposta, contRespond
             <FlashCardStyle  clickNaSeta={clickNaSeta}  flagAcertou={flagAcertou} flagErrou= {flagErrou} flagQuase={flagQuase} imagemIcon={imagemIcon} color={color}>
                <div>
                     <p data-test="flashcard-text">Pergunta {index+1}</p>
-                    <img src={imagemIcon} onClick={() => setarDivs()} ></img>
+                    <img src={imagemIcon} onClick={() => setarDivs()} data-test={stringState}></img>
                </div>
                
             </FlashCardStyle>
