@@ -16,7 +16,7 @@ export default function Footer({resposta, contRespondidas}){
             {/* <div className='terminado'>
 
             </div> */}
-            <p data-test="footer">{contRespondidas} / {cards.length} CONCLUIDOS</p>
+            <p data-test="footer">{contRespondidas}/{cards.length} CONCLUIDOS</p>
             {/* <div className='divImagens'>
             <img src={resposta}/>
             <img src={resposta}/>
