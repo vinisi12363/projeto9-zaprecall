@@ -151,7 +151,7 @@ const FlashCardStyle = styled.div`
     background: #FFFFFF;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
-    background: #feffd3;
+ 
    
     
     p{
