@@ -12,8 +12,21 @@ export default function Footer({resposta, contRespondidas}){
 
     return (
         <FooterStyle>
-            <div className="footer"><p>{`${contRespondidas} / ${cards.length} CONCLUIDOS`}</p>
-            <img src={resposta}></img>
+            <div className="footer">
+            {/* <div className='terminado'>
+
+            </div> */}
+            <p>{`${contRespondidas} / ${cards.length} CONCLUIDOS`}</p>
+            {/* <div className='divImagens'>
+            <img src={resposta}/>
+            <img src={resposta}/>
+            <img src={resposta}/>
+            <img src={resposta}/>
+            <img src={resposta}/>
+            </div>
+          */}
+
+           
             </div>
            
             

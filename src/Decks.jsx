@@ -14,20 +14,23 @@ export default function Decks({resposta, setResposta, contRespondidas,setContRes
     return (
       <>
         <DecksStyle>     
-                        
-                        {   
-                            cardsArray.map((card, index) => (
-                            <FlashCards
-                                index={index}
-                                question={card.question}
-                                answer={card.answer}
-                                resposta={resposta}
-                                setResposta={setResposta}
-                                contRespondidas={contRespondidas}
-                                setContRespondidas={setContRespondidas}
+                        <div data-test="flashcard">
+                            {   
+                                cardsArray.map((card, index) => (
+                                <FlashCards
+                                    index={index}
+                                    question={card.question}
+                                    answer={card.answer}
+                                    resposta={resposta}
+                                    setResposta={setResposta}
+                                    contRespondidas={contRespondidas}
+                                    setContRespondidas={setContRespondidas}
 
-                            />
-                        ))}
+                                />
+                            ))}
+
+                        </div>
+                 
 
 
 
@@ -50,15 +53,21 @@ function FlashCards({index, question, answer, resposta, setResposta, contRespond
     const [flagAcertou, setFlagAcertou] = useState(false) 
     const [flagQuase, setFlagQuase] = useState(false)
     const [flagErrou, setFlagErrou] = useState(false)
+    const [stringState, setStringState] = useState("play-btn");
+    let test=true
     function setarDivs() {
-        setClickNaSeta(true)
+       if(imagemIcon===seta) {
+            setClickNaSeta(true) 
+        }
+        
+       
     }
     function setaVirar() {
         setClickNaSetaVirar(true)
     }
 
     function setAcertou(){
-       
+        setStringState("zap-icon")
         setResposta([...resposta, iconeCerto])
         setClickNaSetaVirar (false)
         setClickNaSeta (false)
@@ -71,6 +80,7 @@ function FlashCards({index, question, answer, resposta, setResposta, contRespond
     }
 
     function setQuase(){
+        setStringState("partial-icon")
         setResposta ([...resposta, iconeQuase])
         setClickNaSetaVirar (false)
         setClickNaSeta (false)
@@ -83,6 +93,7 @@ function FlashCards({index, question, answer, resposta, setResposta, contRespond
     }
 
     function setErrou (){
+        setStringState("no-icon")
         setResposta([...resposta, iconeErro])
         setClickNaSetaVirar (false)
         setClickNaSeta (false)
@@ -99,22 +110,22 @@ function FlashCards({index, question, answer, resposta, setResposta, contRespond
         <>
 
             <FlashCardStyle clickNaSeta={clickNaSeta} flagResposta={flagResposta} flagAcertou={flagAcertou} flagErrou= {flagErrou} flagQuase={flagQuase} imagemIcon={imagemIcon} color={color}>
-                <p>pergunta {index+1}</p>
-                <img src={imagemIcon} onClick={() => setarDivs()}></img>
+                <p data-test="flashcard-text">pergunta {index+1}</p>
+                <img src={imagemIcon} onClick={() => setarDivs()} ></img>
             </FlashCardStyle>
 
             <QuestionAreaStyle clickNaSeta={clickNaSeta} clickNaSetaVirar={clickNaSetaVirar}>
-                <p>{question}</p>
-                <img src={setaVirarImg} id="setaVirarImg" onClick={() => setaVirar()}></img>
+                <p data-test="flashcard-text" >{question}</p>
+                <img src={setaVirarImg} data-test={stringState} id="setaVirarImg" onClick={() => setaVirar() }></img>
             </QuestionAreaStyle>
 
 
             <ResponseAreaStyle clickNaSeta={clickNaSeta} clickNaSetaVirar={clickNaSetaVirar}>
-                <p>{answer}</p>
+                <p data-test="flashcard-text">{answer}</p>
                 <div className='btnArea'>
-                    <button className="btnErrou" onClick={()=> setErrou()}>Não Lembrei</button>
-                    <button className="btnQuaseAcertou" onClick={()=> setQuase()}>Quase Lembrei</button>
-                    <button className='btnAcertou' onClick={()=> setAcertou()}>Zap!</button>
+                    <button data-test = "no-btn" className="btnErrou" onClick={()=> setErrou()}>Não Lembrei</button>
+                    <button data-test = "partial-btn"className="btnQuaseAcertou" onClick={()=> setQuase()}>Quase Lembrei</button>
+                    <button data-test = "zap-btn"className='btnAcertou' onClick={()=> setAcertou()}>Zap!</button>
                 </div>
             </ResponseAreaStyle>
 
@@ -168,8 +179,8 @@ const DecksStyle = styled.div`
 `
 
 const QuestionAreaStyle = styled.div`
-    margin-top:25px;
-    max-width:300px;
+  margin-top:25px;
+  max-width:300px;
   min-height: 131px;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
